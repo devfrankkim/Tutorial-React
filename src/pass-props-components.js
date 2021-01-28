@@ -34,11 +34,14 @@ function BookList() {
   return (
     <section className="booklist">
       {books.map((book) => {
+        // Passing as an object prop
         return <Book book={book}></Book>;
       })}
     </section>
   );
 }
+
+// Passing as an object prop
 const Book = (props) => {
   console.log(props);
   const { img, title, author } = props.book;
