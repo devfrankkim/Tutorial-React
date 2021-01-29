@@ -42,8 +42,73 @@ this is going to be HTML elements and it is going to be the content in our eleme
 */
 ```
 
-============================================================
+### Why do we need props?
+
+- So now I want to take a look at how we can change these values here depending on whatever we are passing.
+
+### Why hooks?
+
+[check out the sorce]("https://blog.bitsrc.io/6-reasons-to-use-react-hooks-instead-of-classes-7e3ee745fe04")
+
+- Hooks let you always use functions instead of having to constantly switch between functions, classes, higher-order components, and render props.
+
+1. You don’t have to refactor a functional component into a class component when it grows
+2. You don’t have to worry about “this” anymore (Classes confuse both people and machines)
+3. No more method bindings
+4. Easier to decouple logic from UI, making both more reusable
+5. Keep related logic in the same place(Complex components become hard to understand)
+6. Sharing stateful logic between components (Custom React Hooks you can extract these reusable stateful logics and test them separately)
+
+```js
+export class ShowCount extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+  componentDidMount() {
+    this.setState({
+      count: this.props.count,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1> Count : {this.state.count} </h1>
+      </div>
+    );
+  }
+}
+```
+
+```js
+export function ShowCount(props) {
+  const [count, setCount] = useState();
+
+  useEffect(() => {
+    setCount(props.count);
+  }, [props.count]);
+
+  return (
+    <div>
+      <h1> Count : {count} </h1>
+    </div>
+  );
+}
+```
 
 ### HOT RELOADING ISSUES fixed
 
 - `FAST_REFRESH = false` in `.env`
+
+### Objects are not valid as a React child, If you meant to render a collection of children, use an array instead.
+
+- It just means that you either haven't the destructured properly or you're not accessing properly.
+
+### Each child in a list should have a unique "key" prop.
+
+- What we would want to do with list is, for example, to remove some items or maybe add the items and react, wants to keep a track of what we're adding, what we're removing.
+- It's going to be a problem if you're actually doing something with the list with MAP(index)
+- map(index) is changing as your array is changing. Not safe.
