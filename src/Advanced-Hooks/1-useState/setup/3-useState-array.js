@@ -6,8 +6,15 @@ const UseStateArray = () => {
   const [people, setPeople] = React.useState(data);
   const removeItem = (id) => {
     // filter -> that's not matching the id -> return the datas
-    let saveData = people.filter((person) => person.id !== id);
-    setPeople(saveData);
+    // let saveData = people.filter((person) => person.id !== id);
+    // setPeople(saveData);
+
+    setPeople((oldPeople) => {
+      console.log(oldPeople);
+      let newPeople = oldPeople.filter((person) => person.id !== id);
+      console.log(newPeople);
+      return newPeople;
+    });
   };
 
   return (
