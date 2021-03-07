@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 // by default -> useEffect runs after every re-render
 // cleanup function
 // second parameter
+// no conditions for useEffect unless using it inside useEffect
 const UseEffectBasics = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     console.log("call useEffect");
-    document.title = `New Messages(${count})`;
+    if (count > 0) {
+      document.title = `New Messages(${count})`;
+    }
+    console.log("document");
   });
   console.log("render component");
   return (
