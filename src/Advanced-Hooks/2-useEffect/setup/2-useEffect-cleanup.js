@@ -11,15 +11,18 @@ const UseEffectCleanup = () => {
     console.log("resizing");
   };
   useEffect(() => {
-    console.log("useEffect start");
-    window.addEventListener("resize", checkSize);
+    console.log("useEffect start"); //2
+    window.addEventListener("resize", checkSize); // 3
+    // WEB API (Mounted)
+    // --->
+
     return () => {
       // invoke once we exit.
       console.log("clean up");
-      window.removeEventListener("resize", checkSize);
+      // window.removeEventListener("resize", checkSize);
     };
   });
-  console.log("render");
+  console.log("render"); // 1
   return (
     <>
       <h2>useEffect cleanup</h2>
