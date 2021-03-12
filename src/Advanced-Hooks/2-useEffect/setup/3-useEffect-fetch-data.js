@@ -11,12 +11,15 @@ const UseEffectFetchData = () => {
     const response = await fetch(url);
     const users = await response.json();
     setUsers(users);
-    // console.log(users);
+    console.log(users);
   };
 
   useEffect(() => {
     getUsers();
-  }, []);
+    return () => {
+      getUsers(); // what happens when we do this? this doesn't look like it's doing anything
+    };
+  }, []); // what happens when getting rid of second parameter? why keep rendering? over 6000 times
   return (
     <>
       <h3>github users</h3>
