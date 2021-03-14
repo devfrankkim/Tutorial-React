@@ -18,8 +18,11 @@ const UseEffectFetchData = () => {
     getUsers();
     return () => {
       getUsers(); // what happens when we do this? this doesn't look like it's doing anything
+      console.log("from return");
     };
-  }, []); // what happens when getting rid of second parameter? why keep rendering? over 6000 times
+  }, []);
+  // what happens when getting rid of second parameter? why keep rendering? over 6000 times
+  // because it keeps rendering when there's new states.
   return (
     <>
       <h3>github users</h3>
