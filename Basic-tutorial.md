@@ -42,6 +42,63 @@ this is going to be HTML elements and it is going to be the content in our eleme
 */
 ```
 
+### Javascript
+
+- JavaScript has properties and values
+- Values MUST include quotation marks.
+
+```js
+<h4 style={{ color: "red" }}>JavaScript has properties and values</h4>
+```
+
+```jsx
+const OutsideVariable = "This works! Good job!";
+const Book = () => {
+  {/*Variable  */}
+  const title = 'You are awesome";
+  return (
+    <>
+    {/*Values*/}
+      <h1>{OutsideVariable}</h1>
+      <h1>{OutsideVariable.toUpperCase()}</h1>
+      <h1>{title}</h1>
+      <h1>{title}</h1>
+      {9+20}
+    </>
+  )
+}
+```
+
+- Destructuring
+
+```js
+const DestructuringExample = (props) => {
+  const {img, title, author} = props
+  return (
+    <>
+
+      <img src={img}>
+      <h1>{title}</h1> // props.title
+      <h1>{author}</h1>
+    </>
+  );
+}
+```
+
+- Object Destructuring
+
+```js
+const DestructuringExample = ({img, title, author}) => {
+  return (
+    <>
+      <img src={img}>
+      <h1>{title}</h1>
+      <h1>{author}</h1>
+    </>
+  );
+}
+```
+
 ### Why do we need props?
 
 - So now I want to take a look at how we can change these values here depending on whatever we are passing.
