@@ -93,6 +93,12 @@ const Book = ({ img, title, author }, book) => {
       <button type="button" onClick={clickHandler}>
         Reference Example
       </button>
+      <button
+        onClick={() => console.log("Button Clicked ")}
+        onMouseOver={() => console.log("Mouse Over")}
+      >
+        Button
+      </button>
       <button type="button" onClick={() => complexExample(author)}>
         more complex example
       </button>
