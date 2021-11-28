@@ -5,22 +5,19 @@ import "./index.css";
 const books = [
   {
     id: 1,
-    img:
-      "https://images-na.ssl-images-amazon.com/images/I/51430n+9jlL._SX355_BO1,204,203,200_.jpg",
+    img: "https://images-na.ssl-images-amazon.com/images/I/51430n+9jlL._SX355_BO1,204,203,200_.jpg",
     title: "Brown Bear, Brown Bear, What Do You See?",
     author: "Frank Kim",
   },
   {
     id: 2,
-    img:
-      "https://images-na.ssl-images-amazon.com/images/I/51wfzW0QnXL._SX355_BO1,204,203,200_.jpg",
+    img: "https://images-na.ssl-images-amazon.com/images/I/51wfzW0QnXL._SX355_BO1,204,203,200_.jpg",
     title: "Chicka Chicka Boom Boom",
     author: "Frank",
   },
   {
     id: 3,
-    img:
-      "https://images-na.ssl-images-amazon.com/images/I/51wfzW0QnXL._SX355_BO1,204,203,200_.jpg",
+    img: "https://images-na.ssl-images-amazon.com/images/I/51wfzW0QnXL._SX355_BO1,204,203,200_.jpg",
     title: "Chicka Chicka Boom Boom",
     author: "Kim",
   },
@@ -30,11 +27,37 @@ function BookList() {
   return (
     <section className="booklist">
       {books.map((book, index) => {
-        return <Book key={book.id} {...book}></Book>;
+        console.log(book);
+        return (
+          <>
+            <Book key={book.id} {...book}></Book>
+            <Test test={book}></Test>
+            <Test1 {...book}>TEST!</Test1>
+            {/* <Test1 test1={...book}></Test1> spreading properities > can't name them in one name */}
+          </>
+        );
       })}
     </section>
   );
 }
+
+// const Test = ({ author, id, img, title }, props) => {
+const Test = (props) => {
+  console.log(props);
+  console.log(props.test);
+  // console.log(author, id, img, title);
+  // console.log(props);
+  return <h1> TEST </h1>;
+};
+
+const Test1 = (props) => {
+  console.log(props);
+  console.log("Test1");
+  // console.log(props);
+  // console.log(author, id, img, title);
+  // console.log(props);
+  return <h1> TEST </h1>;
+};
 
 /*
 
@@ -44,7 +67,9 @@ or we can set it up as a inline function.
 
 */
 
-const Book = ({ img, title, author }) => {
+const Book = ({ img, title, author }, book) => {
+  // console.log(book);
+  // console.log(img, title, author);
   // So what do we need in order to set up an event in react?
   // 1) attribute , 2) eventHandler
   // onClick, onMouseOver
@@ -75,7 +100,8 @@ const Book = ({ img, title, author }) => {
   );
 };
 
-ReactDom.render(<BookList />, document.getElementById("root"));
+// ReactDom.render(<BookList />, document.getElementById("root"));
+export default BookList;
 
 /*
 <button type="button" onClick={complexExample(author)}>
